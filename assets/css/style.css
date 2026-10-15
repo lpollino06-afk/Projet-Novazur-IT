@@ -329,7 +329,8 @@ ul { padding-left: 1.2em; }
 
 /* ---------- Fil d'Ariane ---------- */
 .breadcrumb { font-size: .9rem; color: var(--c-muted); margin-bottom: 18px; }
-.breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; column-gap: 6px; }
+.breadcrumb li { display: flex; align-items: center; min-height: 44px; }
 .breadcrumb li + li::before { content: "›"; margin-right: 6px; color: var(--c-muted); }
 .breadcrumb a { color: var(--c-muted); }
 
