@@ -1,0 +1,24 @@
+AUTOCOLLANTS NOVAZUR IT — INFOS POUR L'IMPRIMEUR
+================================================
+
+1) autocollant-rectangle-50x30mm (.png / .pdf)
+   Format fini : 50 x 30 mm, coins arrondis 3 mm.
+   Fichier : 54 x 34 mm (fond perdu 2 mm de chaque côté).
+   → À coller sur l'ordinateur (près du clavier, sous l'écran ou au dos de l'écran).
+
+2) autocollant-rond-40mm (.png / .pdf)
+   Format fini : Ø 40 mm.
+   Fichier : Ø 44 mm (fond perdu 2 mm).
+   → À coller sur la box internet, l'imprimante ou la tour.
+
+Fichiers fournis :
+ • PDF VECTORIEL (à envoyer en priorité à l'imprimeur) : texte et formes parfaitement nets à toute taille.
+ • PNG haute définition 1200 dpi, si l'imprimeur demande une image.
+
+Conseils de commande :
+ • Support : vinyle blanc adhésif, pelliculage MAT (résiste aux doigts et ne fait pas de reflets).
+ • Découpe « à la forme » (kiss-cut) selon le tracé visible sur apercu-ligne-de-decoupe.png.
+ • Colle repositionnable ou faible tack si possible : s'enlève sans laisser de traces sur le matériel des clients.
+ • Quantité de départ conseillée : 250 à 500 de chaque.
+
+Toujours demander l'accord du client avant de coller un autocollant sur son matériel.

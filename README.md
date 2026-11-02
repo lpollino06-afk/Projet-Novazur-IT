@@ -163,3 +163,7 @@ Dupliquer `depannage-informatique-nice.html`, puis modifier : `<title>`, meta de
 ## Signatures e-mail
 
 `assets/img/email/` contient le logo et le bandeau utilisés par les signatures e-mail (dossier `Signatures-mail` hors du site). **Ne pas supprimer** : les signatures chargent ces images depuis le site.
+
+## Supports de communication
+
+Le dossier `communication/` (flyers, autocollants, réseaux sociaux, signatures e-mail) est versionné avec le site mais **ne doit pas être envoyé sur l'hébergement**.
