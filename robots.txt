@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.novazur-it.fr/sitemap.xml
+Sitemap: https://www.novazur-it.com/sitemap.xml

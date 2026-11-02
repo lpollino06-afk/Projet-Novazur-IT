@@ -122,15 +122,56 @@
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  // Formulaire de contact (envoi AJAX vers le service configuré dans l'attribut action)
+  // Formulaire de contact (envoi AJAX vers contact.php)
   var form = document.getElementById('contact-form');
   if (form) {
     var status = document.getElementById('form-status');
+    var button = form.querySelector('button[type="submit"]');
+    var buttonLabel = button.textContent;
+    var errorText = "Oups, l'envoi a échoué. Appelez-nous au 04 22 13 26 73 ou écrivez à contact@novazur-it.com.";
+
+    var showError = function () {
+      status.textContent = errorText;
+      status.style.color = '#b42318';
+      form.classList.remove('is-shaking');
+      void form.offsetWidth; // relance l'animation
+      form.classList.add('is-shaking');
+    };
+
+    // Remplace le formulaire par un message de confirmation avec une coche animée
+    var showSuccess = function () {
+      var box = document.createElement('div');
+      box.className = 'form-success';
+      box.setAttribute('role', 'status');
+      box.setAttribute('tabindex', '-1');
+      box.innerHTML =
+        '<svg class="form-success__check" viewBox="0 0 56 56" aria-hidden="true">' +
+          '<circle cx="28" cy="28" r="26"/><path d="M16 29l8 8 16-17"/></svg>' +
+        '<h3>Message envoyé !</h3>' +
+        '<p>Merci, votre demande est bien arrivée. Nous vous recontactons rapidement, en général dans la journée.</p>' +
+        '<button type="button" class="btn btn--ghost">Envoyer un autre message</button>';
+      form.hidden = true;
+      form.parentNode.insertBefore(box, form);
+      box.focus();
+      box.querySelector('button').addEventListener('click', function () {
+        box.remove();
+        form.hidden = false;
+        form.querySelector('input').focus();
+      });
+    };
+
+    // Retour du formulaire quand JavaScript était désactivé (contact.php redirige avec ?envoye=1 ou ?erreur=1)
+    if (/[?&]envoye=1/.test(location.search)) showSuccess();
+    else if (/[?&]erreur=1/.test(location.search)) showError();
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (form.querySelector('.hp input').value) return; // anti-spam (pot de miel)
-      status.textContent = 'Envoi en cours…';
-      status.style.color = '';
+      status.textContent = '';
+      form.classList.remove('is-shaking');
+      button.disabled = true;
+      button.classList.add('is-loading');
+      button.textContent = 'Envoi en cours…';
       fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
@@ -138,11 +179,11 @@
       }).then(function (res) {
         if (!res.ok) throw new Error(res.status);
         form.reset();
-        status.textContent = 'Merci ! Votre demande a bien été envoyée, nous vous recontactons rapidement.';
-        status.style.color = 'var(--c-success)';
-      }).catch(function () {
-        status.textContent = "Oups, l'envoi a échoué. Appelez-nous directement ou écrivez-nous par e-mail.";
-        status.style.color = '#b42318';
+        showSuccess();
+      }).catch(showError).then(function () {
+        button.disabled = false;
+        button.classList.remove('is-loading');
+        button.textContent = buttonLabel;
       });
     });
   }

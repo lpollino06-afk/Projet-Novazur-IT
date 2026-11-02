@@ -3,17 +3,34 @@
 # Page 404 personnalisée
 ErrorDocument 404 /404.html
 
+# MultiViews (actif par défaut chez OVH) ajoute tout seul le .html et fausse les règles ci-dessous
+Options -MultiViews
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # /index.html -> /  (évite le contenu dupliqué)
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ https://www.novazur-it.com/ [L,R=301]
+
+  # URLs sans .html : /contact.html -> /contact (redirection 301 des anciennes adresses)
+  RewriteCond %{THE_REQUEST} \s/([^\s?]+)\.html[\s?] [NC]
+  RewriteRule ^ https://www.novazur-it.com/%1 [L,R=301]
+
+  # /contact/ -> /contact (une seule version de chaque page)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ https://www.novazur-it.com/$1 [L,R=301]
 
   # Forcer HTTPS + www (une seule version du site pour Google)
   RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteRule ^(.*)$ https://www.novazur-it.fr/$1 [L,R=301]
+  RewriteRule ^(.*)$ https://www.novazur-it.com/$1 [L,R=301]
 
-  # /index.html -> /  (évite le contenu dupliqué)
-  RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
-  RewriteRule ^index\.html$ / [L,R=301]
+  # /contact sert le fichier contact.html (END : pas de second passage dans les règles)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [END]
 </IfModule>
 
 # Compression
