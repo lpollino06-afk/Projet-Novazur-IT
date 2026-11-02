@@ -1,0 +1,163 @@
+/* Novazur IT — carte interactive de la zone d'intervention (page d'accueil) */
+.zmap-wrap { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 960px) { .zmap-wrap { grid-template-columns: 7fr 5fr; gap: 56px; } }
+
+.zmap {
+  position: relative; border-radius: 24px; overflow: hidden;
+  background: linear-gradient(160deg, #eef5ff, #d6e8fc);
+  border: 1px solid var(--c-border); box-shadow: var(--shadow-lg);
+  aspect-ratio: 1000 / 843;
+}
+.zmap__svg { display: block; width: 100%; height: 100%; }
+.zmap__loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--c-muted); font-size: .95rem; }
+.zmap.is-ready .zmap__loading { display: none; }
+
+/* Fond */
+.zmap__ctx path { fill: #efece5; stroke: #ddd8cd; stroke-width: 1; }
+.zmap__base { fill: #fff; }
+
+/* Communes */
+.zmap__c {
+  stroke: #fff; stroke-width: 1; stroke-linejoin: round; cursor: pointer;
+  transition: fill .25s, opacity .35s;
+}
+.zmap__c[data-z="06"], .zmap__c[data-z="mc"] { fill: #d7e6fd; }
+.zmap__c[data-z="83"] { fill: #ffe0cc; }
+.zmap__c[data-z="hp"] { fill: #e9e6df; stroke: #f7f5f1; }
+.zmap__c[data-z="hp"]:hover { fill: #dcd7cd; }
+.zmap__c[data-z="hp"].is-sel { fill: #9a927f; }
+.zmap__dep { fill: none; stroke: #b9b2a3; stroke-width: 1.4; stroke-dasharray: 2 4; pointer-events: none; }
+.zmap__c[data-z="06"]:hover, .zmap__c[data-z="mc"]:hover { fill: #a8c9f8; }
+.zmap__c[data-z="83"]:hover { fill: #ffc29b; }
+.zmap__c.is-sel { stroke-width: 2.5; }
+.zmap__c[data-z="06"].is-sel, .zmap__c[data-z="mc"].is-sel { fill: var(--c-primary); }
+.zmap__c[data-z="83"].is-sel { fill: var(--c-accent); }
+.zmap__out { fill: none; pointer-events: none; stroke-linejoin: round; }
+.zmap__out--06 { stroke: var(--c-primary); stroke-width: 2.4; }
+.zmap__out--83 { stroke: var(--c-accent); stroke-width: 2.4; stroke-dasharray: 7 5; }
+
+/* Filtres */
+.zmap[data-filter="83"] .zmap__c[data-z="hp"],
+.zmap[data-filter="83"] .zmap__c[data-z="mc"],
+.zmap[data-filter="06"] .zmap__c[data-z="83"],
+.zmap[data-filter="83"] .zmap__c[data-z="06"] { opacity: .18; }
+.zmap[data-filter="06"] .zmap__out--83,
+.zmap[data-filter="83"] .zmap__out--06 { opacity: .25; }
+.zmap[data-filter="83"] .zmap__m:not(.zmap__m--b0) { opacity: .25; }
+
+/* Étiquettes */
+.zmap__lbl { pointer-events: none; font-family: var(--font); paint-order: stroke; stroke-linejoin: round; }
+.zmap__lbl--dept { font-size: 24px; font-weight: 800; letter-spacing: .22em; fill: var(--c-primary-dark); opacity: .55; stroke: #d7e6fd; stroke-width: 4; }
+.zmap__lbl--ctx { font-size: 17px; font-weight: 700; letter-spacing: .2em; fill: #a49d8e; }
+.zmap__lbl--ctx-s { font-size: 13px; font-weight: 700; fill: #a49d8e; }
+.zmap__lbl--tl { font-size: 14px; letter-spacing: .14em; }
+.zmap__lbl--sea { font-size: 22px; font-style: italic; fill: #5f8fc8; letter-spacing: .06em; }
+.zmap__scale path { fill: none; stroke: var(--c-muted); stroke-width: 2; }
+.zmap__scale text { font: 600 14px var(--font); fill: var(--c-muted); }
+
+/* Repères */
+.zmap__m { cursor: pointer; outline: none; transition: opacity .35s; }
+.zmap__dot { stroke: #fff; stroke-width: 3; transition: transform .2s; transform-box: fill-box; transform-origin: center; }
+.zmap__m--b0 .zmap__dot { fill: var(--c-accent); stroke-width: 4; }
+.zmap__m--b1 .zmap__dot { fill: var(--c-success); }
+.zmap__m--b2 .zmap__dot { fill: var(--c-primary); }
+.zmap__m--b3 .zmap__dot { fill: #e59a00; }
+.zmap__m--b4 .zmap__dot { fill: #6b7a90; }
+.zmap__m:hover .zmap__dot, .zmap__m:focus .zmap__dot { transform: scale(1.35); }
+.zmap__m:focus-visible .zmap__dot { stroke: var(--c-text); }
+.zmap__mlbl {
+  font: 700 20px var(--font); fill: var(--c-text); pointer-events: none;
+  paint-order: stroke; stroke: rgba(255, 255, 255, .92); stroke-width: 5; stroke-linejoin: round;
+}
+.zmap__m--b0 .zmap__mlbl { font-size: 22px; font-weight: 800; }
+.zmap__m--quiet .zmap__mlbl { display: none; }
+.zmap__m--quiet:hover .zmap__mlbl, .zmap__m--quiet:focus .zmap__mlbl { display: block; }
+.zmap__pulse { fill: var(--c-accent); opacity: 0; transform-box: fill-box; transform-origin: center; }
+.zmap.is-in .zmap__pulse { animation: zpulse 2.4s ease-out infinite; }
+.zmap.is-in .zmap__pulse--2 { animation-delay: 1.2s; }
+@keyframes zpulse { 0% { transform: scale(1); opacity: .45; } 100% { transform: scale(3.4); opacity: 0; } }
+
+/* Apparition */
+.zmap .zmap__communes, .zmap .zmap__markers, .zmap .zmap__out { opacity: 0; transition: opacity .8s ease, transform .8s ease; }
+.zmap .zmap__markers { transform: translateY(8px); }
+.zmap.is-in .zmap__communes, .zmap.is-in .zmap__out { opacity: 1; }
+.zmap.is-in .zmap__markers { opacity: 1; transform: none; transition-delay: .35s; }
+
+/* Infobulle */
+.zmap__tip {
+  position: absolute; z-index: 3; left: 0; top: 0; width: max-content; max-width: 250px;
+  display: grid; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #fff;
+  box-shadow: 0 12px 34px rgba(15, 27, 45, .18); font-size: .9rem; line-height: 1.4; color: var(--c-muted);
+  opacity: 0; pointer-events: none; transform: translate(-50%, calc(-100% - 14px)) scale(.96);
+  transition: opacity .18s, transform .18s;
+}
+.zmap__tip.is-on { opacity: 1; pointer-events: auto; transform: translate(-50%, calc(-100% - 14px)); }
+.zmap__tip.is-below { transform: translate(-50%, 18px) scale(.96); }
+.zmap__tip.is-below.is-on { transform: translate(-50%, 18px); }
+.zmap__tip::after {
+  content: ""; position: absolute; left: calc(50% + var(--arrow, 0px)); bottom: -6px; width: 12px; height: 12px;
+  background: #fff; transform: translateX(-50%) rotate(45deg); border-radius: 2px;
+}
+.zmap__tip.is-below::after { bottom: auto; top: -6px; }
+.zmap__tip strong { color: var(--c-text); font-size: 1rem; }
+.zmap__tip a { font-weight: 700; }
+.zmap__tz, .zmap__band { justify-self: start; font-size: .78rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+.zmap__tz--06 { background: var(--c-primary-soft); color: var(--c-primary-dark); }
+.zmap__tz--83 { background: #fff1e8; color: var(--c-accent-dark); }
+.zmap__tz--hp { background: #efece5; color: #6b6355; }
+.zmap__tz--mc { background: #fdecef; color: #b4233a; }
+.zmap__band { background: var(--c-bg-soft); color: var(--c-text); }
+.zmap__band--b0 { background: #fff1e8; color: var(--c-accent-dark); }
+.zmap__band--b1 { background: #e5f5ee; color: var(--c-success); }
+.zmap__band--b2 { background: var(--c-primary-soft); color: var(--c-primary-dark); }
+.zmap__band--b3 { background: #fff6dd; color: #9a6400; }
+
+/* Panneau */
+.zmap-panel h2 { margin-top: 8px; }
+.zmap-panel > p { color: var(--c-muted); }
+.zmap-check { margin: 24px 0; padding: 20px; border-radius: var(--radius); background: var(--c-bg-soft); border: 1px solid var(--c-border); }
+.zmap-check label { display: block; font-weight: 700; margin-bottom: 10px; color: var(--c-text); }
+.zmap-check__row { display: flex; gap: 8px; }
+.zmap-check input {
+  flex: 1; min-width: 0; font: inherit; padding: 12px 14px; border-radius: 10px;
+  border: 1px solid var(--c-border); background: #fff; color: var(--c-text);
+}
+.zmap-check input:focus { outline: 2px solid var(--c-primary); outline-offset: 1px; border-color: transparent; }
+.zmap-check .btn { flex: none; }
+.zmap-result { margin: 12px 0 0; font-size: .95rem; min-height: 1.4em; }
+.zmap-result.is-ok { color: var(--c-success); }
+.zmap-result.is-ko { color: var(--c-muted); }
+
+.zmap-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.zmap-filters button {
+  font: 600 .9rem var(--font); padding: 8px 14px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--c-border); background: #fff; color: var(--c-text); transition: background .2s, color .2s, border-color .2s;
+}
+.zmap-filters button[aria-pressed="true"] { background: var(--c-primary); border-color: var(--c-primary); color: #fff; }
+.zmap-filters button[data-zfilter="83"][aria-pressed="true"] { background: var(--c-accent); border-color: var(--c-accent); }
+
+.zmap-legend { list-style: none; padding: 0; margin: 0 0 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: .9rem; color: var(--c-muted); }
+.zmap-legend li { display: flex; align-items: center; gap: 8px; }
+.zmap-legend i { width: 12px; height: 12px; border-radius: 50%; flex: none; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--c-border); }
+.zmap-legend small { grid-column: 1 / -1; font-size: .8rem; }
+.zmap-legend .sq { border-radius: 4px; box-shadow: none; width: 16px; height: 12px; }
+.zmap-panel .city-list { margin-top: 20px; }
+
+/* Mobile : repères et textes plus grands */
+@media (max-width: 640px) {
+  .zmap { border-radius: 18px; }
+  .zmap__mlbl { font-size: 30px; stroke-width: 7; }
+  .zmap__m--b0 .zmap__mlbl { font-size: 32px; }
+  .zmap__dot { transform: scale(1.6); }
+  .zmap__m:hover .zmap__dot, .zmap__m:focus .zmap__dot { transform: scale(2); }
+  .zmap__lbl--dept { font-size: 32px; }
+  .zmap__lbl--ctx { font-size: 26px; }
+  .zmap__lbl--sea { font-size: 34px; }
+  .zmap__lbl--ctx-s, .zmap__lbl--tl, .zmap__m--minor .zmap__mlbl { display: none; }
+  .zmap__scale text { font-size: 24px; }
+  .zmap-legend { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zmap.is-in .zmap__pulse { animation: none; }
+  .zmap .zmap__communes, .zmap .zmap__markers, .zmap .zmap__out { transition: none; }
+}

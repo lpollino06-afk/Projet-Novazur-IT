@@ -3,23 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zone d'intervention informatique Alpes-Maritimes | Novazur IT</title>
-  <meta name="description" content="Novazur IT intervient dans tout le 06 : Nice, Cannes, Antibes, Cagnes-sur-Mer, Grasse, Menton, Sophia Antipolis… Dépannage à domicile et en entreprise.">
+  <title>Zone d'intervention Côte d'Azur et Monaco | Novazur IT</title>
+  <meta name="description" content="Novazur IT intervient sur le littoral des Alpes-Maritimes, à Monaco, dans l'arrière-pays niçois et l'est du Var. Vérifiez si votre commune est desservie.">
   <link rel="canonical" href="https://www.novazur-it.com/zone-intervention">
   <meta name="theme-color" content="#0a5bd3">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Novazur IT">
-  <meta property="og:title" content="Zone d'intervention dans les Alpes-Maritimes | Novazur IT">
-  <meta property="og:description" content="Dépannage et maintenance informatique dans tout le 06, de Menton à Mandelieu.">
+  <meta property="og:title" content="Zone d'intervention : Côte d'Azur, Monaco et est du Var | Novazur IT">
+  <meta property="og:description" content="Dépannage et maintenance informatique de Menton à Mandelieu, à Monaco, dans l'arrière-pays niçois et l'est du Var.">
   <meta property="og:url" content="https://www.novazur-it.com/zone-intervention">
-  <meta property="og:image" content="https://www.novazur-it.com/assets/img/og-image.jpg">
+  <meta property="og:image" content="https://www.novazur-it.com/assets/img/og-image.jpg?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Novazur IT – assistance informatique sur la Côte d'Azur">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/logo.svg?v=2" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <link rel="stylesheet" href="assets/css/carte.css?v=4">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,7 +38,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="logo" href="/" aria-label="Novazur IT – retour à l'accueil">
-        <img src="assets/img/logo.svg" alt="" width="36" height="36">
+        <img src="assets/img/logo.svg?v=2" alt="" width="36" height="36">
         <span>Novazur <b>IT</b></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
@@ -67,9 +68,13 @@
         <nav class="breadcrumb" aria-label="Fil d'Ariane">
           <ol><li><a href="/">Accueil</a></li><li aria-current="page">Zone d'intervention</li></ol>
         </nav>
-        <span class="eyebrow">Alpes-Maritimes (06)</span>
-        <h1>Notre zone d'intervention sur la Côte d'Azur</h1>
-        <p class="hero__lead">Nous intervenons à domicile et en entreprise dans l'ensemble des Alpes-Maritimes. L'assistance à distance, elle, est disponible partout en France.</p>
+        <span class="eyebrow">Côte d'Azur · Monaco · Est Var</span>
+        <h1>Notre zone d'intervention sur la Côte d'Azur et à Monaco</h1>
+        <p class="hero__lead">Nous intervenons à domicile et en entreprise sur tout le littoral des Alpes-Maritimes, à Monaco, dans l'arrière-pays niçois et dans l'est du Var. Plus haut dans les vallées, nous venons sur rendez-vous, et l'assistance à distance est disponible partout en France.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#carte-zone">Voir la carte</a>
+          <a class="btn btn--ghost" href="tel:+33422132673">04 22 13 26 73</a>
+        </div>
         </div>
         <div class="photo-wrap">
           <div class="photo photo--page">
@@ -79,52 +84,136 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="villes-titre">
+    <section class="section" aria-labelledby="carte-titre">
+      <div class="container zmap-wrap">
+        <div class="zmap" id="carte-zone" data-filter="all">
+          <p class="zmap__loading">Chargement de la carte…</p>
+        </div>
+        <div class="zmap-panel">
+          <span class="eyebrow">Carte interactive</span>
+          <h2 id="carte-titre">Votre commune est-elle desservie&nbsp;?</h2>
+          <p>Survolez la carte ou tapez le nom de votre commune : nous vous indiquons si nous intervenons chez vous, et dans quelles conditions.</p>
+          <form class="zmap-check" id="zmap-form" role="search">
+            <label for="zmap-q">Nom de votre commune</label>
+            <div class="zmap-check__row">
+              <input id="zmap-q" name="commune" type="text" list="zmap-list" autocomplete="off" placeholder="Ex. : Vence, Monaco, Fréjus…">
+              <button class="btn btn--primary" type="submit">Vérifier</button>
+            </div>
+            <datalist id="zmap-list"></datalist>
+            <p class="zmap-result" id="zmap-result" aria-live="polite"></p>
+          </form>
+          <div class="zmap-filters" role="group" aria-label="Afficher sur la carte">
+            <button type="button" data-zfilter="all" aria-pressed="true">Toute la zone</button>
+            <button type="button" data-zfilter="06" aria-pressed="false">Alpes-Maritimes et Monaco</button>
+            <button type="button" data-zfilter="83" aria-pressed="false">Var</button>
+          </div>
+          <ul class="zmap-legend">
+            <li><i class="sq" style="background:#d7e6fd;outline:2px solid var(--c-primary)"></i>Côte et arrière-pays proche</li>
+            <li><i class="sq" style="background:#ffe0cc;outline:2px dashed var(--c-accent)"></i>Est du Var</li>
+            <li><i class="sq" style="background:#e9e6df"></i>Haut pays : sur rendez-vous</li>
+            <li></li>
+            <li><i style="background:var(--c-success)"></i>Moins de 30 min</li>
+            <li><i style="background:var(--c-primary)"></i>30 à 45 min</li>
+            <li><i style="background:#e59a00"></i>45 min à 1 h</li>
+            <small>Temps de trajet indicatifs depuis Nice, hors heures de pointe.</small>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="villes-titre">
       <div class="container">
         <div class="section__head">
           <h2 id="villes-titre">Nos pages dédiées par ville</h2>
+          <p>Chaque secteur a ses particularités : retrouvez nos services et les communes desservies autour de chez vous.</p>
         </div>
         <div class="grid grid--3">
           <article class="card">
-            <div class="card__media"><img src="assets/img/nice-vieux-nice-card.webp" srcset="assets/img/nice-vieux-nice-card-sm.webp 600w, assets/img/nice-vieux-nice-card.webp 1200w" sizes="(min-width: 960px) 360px, (min-width: 640px) 50vw, 100vw" width="1200" height="675" loading="lazy" alt="Ruelle animée du Vieux-Nice"></div>
             <h3>Nice</h3>
             <p>Dépannage à domicile dans tous les quartiers et maintenance pour les entreprises de la Métropole.</p>
             <a class="card__link" href="depannage-informatique-nice">Informatique à Nice</a>
           </article>
           <article class="card">
-            <div class="card__media"><img src="assets/img/cannes-port-card.webp" srcset="assets/img/cannes-port-card-sm.webp 600w, assets/img/cannes-port-card.webp 1200w" sizes="(min-width: 960px) 360px, (min-width: 640px) 50vw, 100vw" width="1200" height="675" loading="lazy" alt="Le Vieux-Port de Cannes et le quartier du Suquet"></div>
+            <h3>Monaco</h3>
+            <p>Résidents, résidences secondaires et sociétés monégasques, de Monte-Carlo à Fontvieille.</p>
+            <a class="card__link" href="depannage-informatique-monaco">Informatique à Monaco</a>
+          </article>
+          <article class="card">
+            <h3>Villefranche, Beaulieu, Cap-Ferrat</h3>
+            <p>Wi-Fi des villas, résidences secondaires et commerces de la Riviera.</p>
+            <a class="card__link" href="depannage-informatique-villefranche-sur-mer">Informatique à Villefranche, Beaulieu, Cap-Ferrat</a>
+          </article>
+          <article class="card">
+            <h3>Menton</h3>
+            <p>Particuliers, commerces et entreprises du pays mentonnais, jusqu'à Sospel.</p>
+            <a class="card__link" href="depannage-informatique-menton">Informatique à Menton</a>
+          </article>
+          <article class="card">
+            <h3>Saint-Laurent-du-Var</h3>
+            <p>Assistance à domicile et service informatique externalisé pour les Laurentins.</p>
+            <a class="card__link" href="depannage-informatique-saint-laurent-du-var">Informatique à Saint-Laurent-du-Var</a>
+          </article>
+          <article class="card">
+            <h3>Cagnes-sur-Mer</h3>
+            <p>Du Cros-de-Cagnes au Haut-de-Cagnes, pour les particuliers comme pour les pros.</p>
+            <a class="card__link" href="depannage-informatique-cagnes-sur-mer">Informatique à Cagnes-sur-Mer</a>
+          </article>
+          <article class="card">
+            <h3>Vence et Saint-Paul</h3>
+            <p>Particuliers, galeries, commerces et maisons d'hôtes des villages voisins.</p>
+            <a class="card__link" href="depannage-informatique-vence">Informatique à Vence</a>
+          </article>
+          <article class="card">
+            <h3>Arrière-pays niçois</h3>
+            <p>Levens, Contes, Carros, L'Escarène : dépannage, connexion internet et télétravail.</p>
+            <a class="card__link" href="depannage-informatique-arriere-pays-nicois">Informatique dans l'arrière-pays niçois</a>
+          </article>
+          <article class="card">
+            <h3>Antibes et Sophia Antipolis</h3>
+            <p>Dépannage à domicile et support informatique pour les start-ups de la technopole.</p>
+            <a class="card__link" href="depannage-informatique-antibes">Informatique à Antibes et Sophia Antipolis</a>
+          </article>
+          <article class="card">
             <h3>Cannes</h3>
-            <p>Assistance pour particuliers, commerces, hôtels et agences, du Suquet à La Bocca.</p>
+            <p>Particuliers, commerces, hôtels et agences, du Suquet à La Bocca.</p>
             <a class="card__link" href="depannage-informatique-cannes">Informatique à Cannes</a>
           </article>
           <article class="card">
-            <div class="card__media"><img src="assets/img/antibes-remparts-card.webp" srcset="assets/img/antibes-remparts-card-sm.webp 600w, assets/img/antibes-remparts-card.webp 1200w" sizes="(min-width: 960px) 360px, (min-width: 640px) 50vw, 100vw" width="1200" height="675" loading="lazy" alt="Les remparts et la vieille ville d'Antibes au bord de la mer"></div>
-            <h3>Antibes &amp; Sophia Antipolis</h3>
-            <p>Dépannage à domicile et support informatique pour les start-ups de la technopole.</p>
-            <a class="card__link" href="depannage-informatique-antibes">Informatique à Antibes</a>
+            <h3>Mougins et Le Cannet</h3>
+            <p>Maisons, villas et entreprises entre Cannes, Grasse et Sophia.</p>
+            <a class="card__link" href="depannage-informatique-mougins-le-cannet">Informatique à Mougins et au Cannet</a>
+          </article>
+          <article class="card">
+            <h3>Grasse</h3>
+            <p>Assistance à domicile et maintenance pour les entreprises du pays grassois.</p>
+            <a class="card__link" href="depannage-informatique-grasse">Informatique à Grasse</a>
+          </article>
+          <article class="card">
+            <h3>Fréjus et Saint-Raphaël</h3>
+            <p>L'est du Var et le pays de Fayence, sur rendez-vous et à distance.</p>
+            <a class="card__link" href="depannage-informatique-frejus-saint-raphael">Informatique à Fréjus et Saint-Raphaël</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section--soft" aria-labelledby="secteurs-titre">
+    <section class="section" aria-labelledby="secteurs-titre">
       <div class="container">
         <div class="section__head">
           <h2 id="secteurs-titre">Toutes les communes desservies</h2>
+          <p>Notre zone principale couvre la côte et l'arrière-pays proche, à environ 30 minutes du littoral.</p>
         </div>
-        <figure class="section-banner photo">
-          <img src="assets/img/villefranche-sur-mer-cote-azur-banner.webp" srcset="assets/img/villefranche-sur-mer-cote-azur-banner-sm.webp 800w, assets/img/villefranche-sur-mer-cote-azur-banner.webp 1600w" sizes="(min-width: 1160px) 1128px, 100vw" width="1600" height="600" loading="lazy" alt="Vue sur Villefranche-sur-Mer et le Cap Ferrat">
-        </figure>
         <div class="grid grid--3">
           <div>
-            <h3>Littoral Est</h3>
+            <h3>Littoral Est et Monaco</h3>
             <ul class="city-list">
               <li><a href="depannage-informatique-nice">Nice</a></li>
-              <li><span>Villefranche-sur-Mer</span></li>
+              <li><a href="depannage-informatique-villefranche-sur-mer">Villefranche-sur-Mer</a></li>
               <li><span>Saint-Jean-Cap-Ferrat</span></li>
               <li><span>Beaulieu-sur-Mer</span></li>
               <li><span>Èze</span></li>
               <li><span>Cap-d'Ail</span></li>
+              <li><a href="depannage-informatique-monaco">Monaco</a></li>
               <li><span>Beausoleil</span></li>
               <li><span>Roquebrune-Cap-Martin</span></li>
               <li><a href="depannage-informatique-menton">Menton</a></li>
@@ -140,26 +229,73 @@
               <li><span>Juan-les-Pins</span></li>
               <li><span>Vallauris</span></li>
               <li><a href="depannage-informatique-cannes">Cannes</a></li>
-              <li><span>Le Cannet</span></li>
+              <li><a href="depannage-informatique-mougins-le-cannet">Le Cannet</a></li>
               <li><span>Mandelieu-la-Napoule</span></li>
+              <li><span>Théoule-sur-Mer</span></li>
             </ul>
           </div>
           <div>
-            <h3>Moyen-pays</h3>
+            <h3>Arrière-pays niçois</h3>
             <ul class="city-list">
-              <li><span>Sophia Antipolis</span></li>
+              <li><a href="depannage-informatique-arriere-pays-nicois">Levens</a></li>
+              <li><span>Tourrette-Levens</span></li>
+              <li><span>Aspremont</span></li>
+              <li><span>Falicon</span></li>
+              <li><span>La Trinité</span></li>
+              <li><a href="depannage-informatique-arriere-pays-nicois">Contes</a></li>
+              <li><span>L'Escarène</span></li>
+              <li><span>Peille</span></li>
+              <li><a href="depannage-informatique-arriere-pays-nicois">Carros</a></li>
+              <li><span>Le Broc</span></li>
+              <li><span>Gattières</span></li>
+              <li><span>Saint-Martin-du-Var</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Moyen-pays et pays grassois</h3>
+            <ul class="city-list">
+              <li><a href="depannage-informatique-vence">Vence</a></li>
+              <li><span>Saint-Paul-de-Vence</span></li>
+              <li><span>Tourrettes-sur-Loup</span></li>
+              <li><span>La Colle-sur-Loup</span></li>
               <li><span>Biot</span></li>
               <li><span>Valbonne</span></li>
-              <li><span>Mougins</span></li>
+              <li><a href="depannage-informatique-antibes">Sophia Antipolis</a></li>
+              <li><a href="depannage-informatique-mougins-le-cannet">Mougins</a></li>
+              <li><span>Mouans-Sartoux</span></li>
               <li><a href="depannage-informatique-grasse">Grasse</a></li>
-              <li><span>Vence</span></li>
-              <li><span>Saint-Paul-de-Vence</span></li>
-              <li><span>La Colle-sur-Loup</span></li>
-              <li><span>Carros</span></li>
+              <li><span>Peymeinade</span></li>
+              <li><span>Cabris</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Pays mentonnais</h3>
+            <ul class="city-list">
+              <li><span>Sospel</span></li>
+              <li><span>Castillon</span></li>
+              <li><span>Gorbio</span></li>
+              <li><span>Sainte-Agnès</span></li>
+              <li><span>Castellar</span></li>
+              <li><span>La Turbie</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Est du Var (≈ 1 h de Nice)</h3>
+            <ul class="city-list">
+              <li><a href="depannage-informatique-frejus-saint-raphael">Saint-Raphaël</a></li>
+              <li><a href="depannage-informatique-frejus-saint-raphael">Fréjus</a></li>
+              <li><span>Puget-sur-Argens</span></li>
+              <li><span>Les Adrets-de-l'Estérel</span></li>
+              <li><span>Bagnols-en-Forêt</span></li>
+              <li><span>Fayence</span></li>
+              <li><span>Tourrettes</span></li>
+              <li><span>Montauroux</span></li>
+              <li><span>Callian</span></li>
+              <li><span>Tanneron</span></li>
             </ul>
           </div>
         </div>
-        <p class="text-center muted mt-lg">Votre commune n'apparaît pas&nbsp;? <a href="contact">Contactez-nous</a>, nous intervenons sûrement chez vous.</p>
+        <p class="text-center muted mt-lg">Votre commune n'apparaît pas&nbsp;? Dans le haut pays (vallées de la Tinée, de la Vésubie, de la Roya…), nous intervenons sur rendez-vous. <a href="contact">Contactez-nous</a>.</p>
       </div>
     </section>
 
@@ -182,7 +318,7 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a class="logo" href="/"><img src="assets/img/logo.svg" alt="" width="36" height="36"><span>Novazur <b>IT</b></span></a>
+          <a class="logo" href="/"><img src="assets/img/logo.svg?v=2" alt="" width="36" height="36"><span>Novazur <b>IT</b></span></a>
           <p>Dépannage, assistance et maintenance informatique pour particuliers et PME sur la Côte d'Azur.</p>
           <address style="font-style:normal">
             Novazur IT<br>
@@ -215,6 +351,8 @@
             <li><a href="depannage-informatique-saint-laurent-du-var">Informatique Saint-Laurent</a></li>
             <li><a href="depannage-informatique-menton">Informatique Menton</a></li>
             <li><a href="depannage-informatique-grasse">Informatique Grasse</a></li>
+            <li><a href="depannage-informatique-monaco">Informatique Monaco</a></li>
+            <li><a href="depannage-informatique-frejus-saint-raphael">Fréjus / Saint-Raphaël</a></li>
             <li><a href="zone-intervention">Toutes les zones</a></li>
           </ul>
         </div>
@@ -225,6 +363,8 @@
             <li><a href="mailto:contact@novazur-it.com">contact@novazur-it.com</a></li>
             <li>Lun – ven : 8h30 – 19h</li>
             <li>Samedi : 9h – 13h</li>
+            <li lang="en">Français · English</li>
+            <li><a href="a-propos">Qui sommes-nous&nbsp;?</a></li>
           </ul>
         </div>
       </div>
@@ -241,5 +381,16 @@
   </div>
 
   <script src="assets/js/main.js?v=2" defer></script>
+  <script>
+    (function () {
+      var el = document.getElementById('carte-zone');
+      if (!el) return;
+      function go() { var s = document.createElement('script'); s.src = 'assets/js/carte-zone.js?v=5'; document.body.appendChild(s); }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); go(); } }, { rootMargin: '600px' });
+        io.observe(el);
+      } else { go(); }
+    })();
+  </script>
 </body>
 </html>

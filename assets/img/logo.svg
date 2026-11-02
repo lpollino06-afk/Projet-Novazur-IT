@@ -8,10 +8,13 @@
       <stop offset="0" stop-color="#ffb347"/>
       <stop offset="1" stop-color="#ff6a2b"/>
     </linearGradient>
+    <clipPath id="nz-clip">
+      <rect width="64" height="64" rx="16"/>
+    </clipPath>
   </defs>
   <rect width="64" height="64" rx="16" fill="url(#nz-bg)"/>
   <!-- vague discrète -->
-  <path d="M0 50c8-4 16-4 24 0s16 4 24 0 12-3 16-1.5V64H0z" fill="#ffffff" fill-opacity=".12"/>
+  <path d="M0 50c8-4 16-4 24 0s16 4 24 0 12-3 16-1.5V64H0z" fill="#ffffff" fill-opacity=".12" clip-path="url(#nz-clip)"/>
   <!-- monogramme N -->
   <path d="M19 45V19l26 26V32" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- soleil -->

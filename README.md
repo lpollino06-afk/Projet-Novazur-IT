@@ -11,11 +11,14 @@ Site vitrine statique (HTML/CSS/JS, sans framework). S'héberge sur n'importe qu
 | `assistance-informatique-particuliers.html` | Offre particuliers | assistance informatique à domicile |
 | `ordinateur-lent.html` / `suppression-virus-arnaque.html` / `installation-wifi-box-internet.html` / `recuperation-donnees.html` | Pages par problème (particuliers) | ordinateur lent, suppression virus, installation wifi, récupération de données |
 | `installation-antivirus.html` | Gestion antivirus (particuliers + PME) : licences, installation, suivi | installation antivirus, antivirus entreprise |
+| `maintenance-informatique-entreprise.html` / `telephonie-voip-entreprise.html` / `microsoft-365-entreprise.html` / `sauvegarde-informatique-entreprise.html` / `cybersecurite-entreprise.html` | Pages services entreprises | maintenance informatique entreprise, téléphonie VoIP, Microsoft 365, sauvegarde, cybersécurité PME |
 | `infogerance-informatique-pme.html` | Offre entreprises | infogérance / maintenance informatique PME |
 | `formation-informatique.html` | Formations particuliers & entreprises | formation informatique Nice / cours informatique seniors |
 | `tarifs.html` | Tarifs | tarif dépannage informatique |
 | `zone-intervention.html` | Communes desservies | informatique Alpes-Maritimes |
 | `depannage-informatique-nice.html` / `-cannes` / `-antibes` / `-cagnes-sur-mer` / `-saint-laurent-du-var` / `-menton` / `-grasse` | Pages locales | dépannage informatique + ville |
+| `depannage-informatique-monaco.html` (renforcée) / `-villefranche-sur-mer` / `-arriere-pays-nicois` / `-vence` / `-mougins-le-cannet` / `-frejus-saint-raphael` | Nouvelles pages locales | dépannage informatique + ville |
+| `a-propos.html` | Qui sommes-nous : histoire (supervision IT à Monaco, création 2026), convictions, engagements | Novazur IT |
 | `contact.html` | Formulaire + coordonnées | — |
 | `mentions-legales.html` | Obligations légales + RGPD | (noindex) |
 | `404.html`, `sitemap.xml`, `robots.txt`, `.htaccess` | Technique | — |
@@ -74,6 +77,8 @@ recadrées et converties en WebP, chacune en deux tailles (`srcset`) pour le mob
 | Fichier | Source Unsplash |
 |---|---|
 | `support-informatique-nice*.jpg`, `og-image.jpg` | Image fournie par Novazur IT |
+| `a-propos-riviera-monaco-hero*.webp` | unsplash.com/photos/8tQC3gTopgI |
+| `a-propos-numerique-visio*.webp` | unsplash.com/photos/HJgaV1qjHS0 |
 | `assistance-informatique-domicile-particulier*.webp` | photo-1758612897035-f75eb62f9f57 |
 | `maintenance-informatique-entreprise-pme*.webp` | photo-1551434678-e076c223a692 |
 | `cybersecurite-serveur-entreprise*.webp` | photo-1573164713988-8665fc963095 |
@@ -95,6 +100,44 @@ recadrées et converties en WebP, chacune en deux tailles (`srcset`) pour le mob
 | `antivirus-particulier-canape-card*.webp` (pages problème / antivirus) | unsplash.com/photos/t2HJh7OsnVs |
 | `antivirus-entreprise-equipe-card*.webp` (pages problème / antivirus) | unsplash.com/photos/N3Bf0ArT5J0 |
 | `antivirus-bureau-open-space-tall*.webp` (pages problème / antivirus) | unsplash.com/photos/CXxH2EiX760 |
+| `maintenance-technicien-baie-serveur-hero*.webp` (pages entreprises) | unsplash.com/photos/ufT32_VFS-I |
+| `maintenance-bureaux-open-space-tall*.webp` (pages entreprises) | unsplash.com/photos/kN_kViDchA0 |
+| `maintenance-point-client-tall*.webp` (pages entreprises) | unsplash.com/photos/uQM4Vk6F_7o |
+| `telephonie-ip-salarie-appel-hero*.webp` (pages entreprises) | unsplash.com/photos/WEDDt-u3q3o |
+| `poste-telephone-ip-bureau*.webp` (pages entreprises) | unsplash.com/photos/Dkn8-zPIbwo |
+| `telephonie-mobile-softphone*.webp` (pages entreprises) | unsplash.com/photos/lDEPHBi7QK4 |
+| `telephone-ip-salle-reunion-banner*.webp` (pages entreprises) | unsplash.com/photos/V6GChIKrriU |
+| `microsoft-365-ordinateur-bureau-hero*.webp` (pages entreprises) | unsplash.com/photos/pPpUCaudT5Q |
+| `visioconference-teams-banner*.webp` (pages entreprises) | unsplash.com/photos/smgTvepind4 |
+| `agenda-outlook-partage*.webp` (pages entreprises) | unsplash.com/photos/4BnNnEtAGP0 |
+| `visio-equipe-ordinateur-tall*.webp` (pages entreprises) | unsplash.com/photos/s8KDEUHJErQ |
+| `sauvegarde-disque-entreprise-hero*.webp` (pages entreprises) | unsplash.com/photos/hL8slYnc-bM |
+| `sauvegarde-baie-serveurs*.webp` (pages entreprises) | unsplash.com/photos/2JJ3wBHu4_0 |
+| `sauvegarde-externalisee-datacenter-tall*.webp` (pages entreprises) | unsplash.com/photos/fImCPTZ026U |
+| `cybersecurite-supervision-ecrans-hero*.webp` (pages entreprises) | unsplash.com/photos/3WW_8chGubQ |
+| `cybersecurite-pare-feu-reseau-banner*.webp` (pages entreprises) | unsplash.com/photos/eVWWr6nmDf8 |
+| `sensibilisation-cybersecurite-equipe*.webp` (pages entreprises) | unsplash.com/photos/gMsnXqILjp4 |
+| `cybersecurite-baie-reseau-tall*.webp` (pages entreprises) | unsplash.com/photos/c-lSQecD9oI |
+| `monaco-port-hercule-hero*.webp` (pages villes) | unsplash.com/photos/bVXvntN75zY |
+| `monaco-yachts-port-banner*.webp` (pages villes) | unsplash.com/photos/1CkSNmbT7J0 |
+| `monaco-monte-carlo-tours-tall*.webp` (pages villes) | unsplash.com/photos/_0hTRmpkT5s |
+| `monaco-rocher-fontvieille-tall*.webp` (pages villes) | unsplash.com/photos/otl--SqrefI |
+| `monaco-rue-vue-mer-card*.webp` (pages villes) | unsplash.com/photos/mFpXE-oyVoo |
+| `villefranche-sur-mer-rade-hero*.webp` (pages villes) | unsplash.com/photos/3OpfLXmfuYY |
+| `saint-jean-cap-ferrat-vue-aerienne-banner*.webp` (pages villes) | unsplash.com/photos/5uKbBBkoQco |
+| `eze-vue-cap-ferrat-tall*.webp` (pages villes) | unsplash.com/photos/qWYfwwGwMt0 |
+| `arriere-pays-nicois-gorges-hero*.webp` (pages villes) | unsplash.com/photos/pzKQC0B5RaU |
+| `village-perche-arriere-pays-tall*.webp` (pages villes) | unsplash.com/photos/pUhcWVhekcw |
+| `village-perche-mediterranee-card*.webp` (pages villes) | unsplash.com/photos/I18z3r0raS4 |
+| `vence-ruelle-pavee-hero*.webp` (pages villes) | unsplash.com/photos/pTaKfl-yNoA |
+| `village-provencal-rue-tall*.webp` (pages villes) | unsplash.com/photos/guASyf2km7c |
+| `ruelle-escaliers-pierre-card*.webp` (pages villes) | unsplash.com/photos/MDl4txrOudQ |
+| `cannes-suquet-vue-mougins-hero*.webp` (pages villes) | unsplash.com/photos/mc1YUnKr2WU |
+| `collines-mougins-coucher-soleil-banner*.webp` (pages villes) | unsplash.com/photos/-xXwe3-Ttww |
+| `bougainvillier-provence-tall*.webp` (pages villes) | unsplash.com/photos/rPGcXFxyBdI |
+| `saint-raphael-port-palmiers-hero*.webp` (pages villes) | unsplash.com/photos/W3CjnuOcgTw |
+| `frejus-plage-coucher-soleil-banner*.webp` (pages villes) | unsplash.com/photos/qh3B7kqEm70 |
+| `frejus-vieille-ville-rue-tall*.webp` (pages villes) | unsplash.com/photos/1xR5iVnXMMU |
 
 Toutes les autres photos (suffixes `-banner`, `-tall`, `-hero`, `-card` ; versions mobiles en `-sm`) proviennent également
 d'Unsplash, sous la même licence. Chaque section du site comporte au moins une image.
@@ -102,8 +145,21 @@ d'Unsplash, sous la même licence. Chaque section du site comporte au moins une 
 Pour mettre vos propres photos : garder les **mêmes noms de fichiers** et un format proche (4:3 ; 5:4 pour la photo d'accueil),
 compresser en WebP (ex. sur squoosh.app) et adapter le texte `alt` dans `index.html`.
 
+## Carte de la zone d'intervention (accueil)
+
+Carte interactive en SVG, sans librairie ni service externe : `assets/js/carte-zone.js` (données + code) et `assets/css/carte.css`,
+chargés uniquement sur l'accueil, et seulement à l'approche de la section. Cadrage : littoral et arrière-pays proche (≈ 30 min de la côte) ; la recherche reconnaît toutes les communes du 06 (hors cadre = « sur rendez-vous »). Monaco inclus. Var : 11 communes à environ 1 h de Nice
+(Saint-Raphaël, Fréjus, Puget-sur-Argens, Les Adrets-de-l'Estérel, Bagnols-en-Forêt, Montauroux, Callian, Tanneron, Fayence, Tourrettes,
+Saint-Paul-en-Forêt). Contours des communes : projet [france-geojson](https://github.com/gregoiredavid/france-geojson) (données IGN / INSEE,
+Licence Ouverte Etalab), simplifiés. Les temps de trajet affichés sont indicatifs. Pour ajouter une commune du Var ou un repère,
+il faut régénérer `carte-zone.js` (script de génération conservé hors du site).
+
 ## Ajouter une page ville
 
 Dupliquer `depannage-informatique-nice.html`, puis modifier : `<title>`, meta description, canonical,
 `og:url`, JSON-LD, `<h1>`, textes et quartiers. Ajouter la page dans `sitemap.xml`,
 `zone-intervention.html` et le pied de page.
+
+## Signatures e-mail
+
+`assets/img/email/` contient le logo et le bandeau utilisés par les signatures e-mail (dossier `Signatures-mail` hors du site). **Ne pas supprimer** : les signatures chargent ces images depuis le site.
