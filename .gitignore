@@ -6,3 +6,6 @@ desktop.ini
 # Éditeur
 .vscode/
 *.code-workspace
+
+# Doublons créés par la synchronisation iCloud (« fichier 2.html »)
+* 2.*

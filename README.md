@@ -34,7 +34,7 @@ Faire un « rechercher / remplacer dans tous les fichiers » (Ctrl+Maj+H dans VS
 - [ ] Horaires d'ouverture (pied de page, contact, JSON-LD dans `index.html`)
 - [ ] **Tarifs** dans `tarifs.html` : ce sont des prix indicatifs du marché, à ajuster
 - [ ] Formulaire : créer un compte sur [Formspree](https://formspree.io) (gratuit) et remplacer `VOTRE_ID` dans `contact.html`
-- [ ] Lien du module de télé-assistance dans `contact.html` (AnyDesk, RustDesk…)
+- [ ] Liens de téléchargement du module de télé-assistance dans `assistance-a-distance.html` : 2 boutons « Bientôt disponible » (Windows, Mac) à activer. Pour régénérer la page : `python3 outils/gen_assistance_distance.py`
 - [ ] Mentions légales : SIRET, forme juridique, hébergeur, directeur de publication
 - [ ] (Optionnel) Remplacer `assets/img/og-image.jpg` (1200×630 px, aperçu lors des partages) par un visuel avec votre logo
 - [ ] Crédit d'impôt 50 % : bloc commenté dans `assistance-informatique-particuliers.html`, à activer **uniquement** si vous êtes déclaré « Services à la personne » (SAP)
@@ -167,3 +167,7 @@ Dupliquer `depannage-informatique-nice.html`, puis modifier : `<title>`, meta de
 ## Supports de communication
 
 Le dossier `communication/` (flyers, autocollants, réseaux sociaux, signatures e-mail) est versionné avec le site mais **ne doit pas être envoyé sur l'hébergement**.
+
+## Outils
+
+`outils/` contient les scripts qui génèrent certaines pages. Comme `communication/`, ce dossier n'est **jamais mis en ligne**.
