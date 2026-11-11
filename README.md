@@ -19,6 +19,9 @@ Site vitrine statique (HTML/CSS/JS, sans framework). S'héberge sur n'importe qu
 | `depannage-informatique-nice.html` / `-cannes` / `-antibes` / `-cagnes-sur-mer` / `-saint-laurent-du-var` / `-menton` / `-grasse` | Pages locales | dépannage informatique + ville |
 | `depannage-informatique-monaco.html` (renforcée) / `-villefranche-sur-mer` / `-arriere-pays-nicois` / `-vence` / `-mougins-le-cannet` / `-frejus-saint-raphael` | Nouvelles pages locales | dépannage informatique + ville |
 | `a-propos.html` | Qui sommes-nous : histoire (supervision IT à Monaco, création 2026), convictions, engagements | Novazur IT |
+| `installation-imprimante.html` / `nouvel-ordinateur-transfert-donnees.html` | Pages problèmes (particuliers) | dépannage imprimante, installation nouvel ordinateur |
+| `it-support-french-riviera-monaco.html` | Page en anglais (Riviera, Monaco, résidences secondaires) | IT support French Riviera / Monaco |
+| `assistance-a-distance.html` | Télé-assistance : téléchargement du module, sécurité, FAQ | assistance informatique à distance |
 | `contact.html` | Formulaire + coordonnées | — |
 | `mentions-legales.html` | Obligations légales + RGPD | (noindex) |
 | `404.html`, `sitemap.xml`, `robots.txt`, `.htaccess` | Technique | — |
@@ -79,6 +82,17 @@ recadrées et converties en WebP, chacune en deux tailles (`srcset`) pour le mob
 | `support-informatique-nice*.jpg`, `og-image.jpg` | Image fournie par Novazur IT |
 | `a-propos-riviera-monaco-hero*.webp` | unsplash.com/photos/8tQC3gTopgI |
 | `a-propos-numerique-visio*.webp` | unsplash.com/photos/HJgaV1qjHS0 |
+| `imprimante-maison-parquet-hero*.webp` | unsplash.com/photos/QbOnQQebbjU |
+| `imprimante-panneau-commande-tall*.webp` | unsplash.com/photos/j7cOdWrbKUI |
+| `imprimante-cartouches-encre*.webp` | unsplash.com/photos/Da9qsu-0a00 |
+| `nouvel-ordinateur-carton-hero*.webp` | unsplash.com/photos/BsuO0vUX8BY |
+| `ordinateur-portable-bureau-bois-tall*.webp` | unsplash.com/photos/RSCirJ70NDM |
+| `installation-windows-portable-hero*.webp` | unsplash.com/photos/XITGKg5gRyw |
+| `cable-usb-transfert-banner*.webp` | unsplash.com/photos/uzPq35Ahq20 |
+| `smartphone-ordinateur-transfert-card*.webp` | unsplash.com/photos/xsGxhtAsfSA |
+| `riviera-monaco-aerial-hero*.webp` | unsplash.com/photos/LpUZX53hBqc |
+| `monaco-fontvieille-cliff-tall*.webp` | unsplash.com/photos/boBaMH39P6Y |
+| `second-home-laptop-sideboard-hero*.webp` | unsplash.com/photos/1SAnrIxw5OY |
 | `assistance-informatique-domicile-particulier*.webp` | photo-1758612897035-f75eb62f9f57 |
 | `maintenance-informatique-entreprise-pme*.webp` | photo-1551434678-e076c223a692 |
 | `cybersecurite-serveur-entreprise*.webp` | photo-1573164713988-8665fc963095 |
@@ -170,4 +184,14 @@ Le dossier `communication/` (flyers, autocollants, réseaux sociaux, signatures 
 
 ## Outils
 
-`outils/` contient les scripts qui génèrent certaines pages. Comme `communication/`, ce dossier n'est **jamais mis en ligne**.
+`outils/` contient les scripts qui génèrent certaines pages (`blocks.py` = boîte à outils commune, `footer.py` = pied de page de tout le site). Comme `communication/`, ce dossier n'est **jamais mis en ligne**.
+
+## Statistiques de visite (sans cookies)
+
+Toutes les pages chargent `assets/js/stats.js`, **désactivé par défaut**. Pour l'activer :
+1. créer un compte GoatCounter (goatcounter.com) ou Plausible (plausible.io), deux outils sans cookies ;
+2. renseigner `PROVIDER` et `CODE` en haut de `assets/js/stats.js`, puis envoyer ce fichier sur le serveur ;
+3. compléter le paragraphe « Cookies » des mentions légales avec le nom de l'outil.
+
+En attendant, OVH fournit des statistiques de fréquentation basées sur les journaux du serveur
+(espace client OVH › Hébergements › Statistiques et logs), sans rien installer sur le site.
