@@ -195,3 +195,7 @@ Toutes les pages chargent `assets/js/stats.js`, **désactivé par défaut**. Pou
 
 En attendant, OVH fournit des statistiques de fréquentation basées sur les journaux du serveur
 (espace client OVH › Hébergements › Statistiques et logs), sans rien installer sur le site.
+
+## Google Search Console
+
+`googleb3dea0bd61837eda.html` (à la racine) prouve à Google que le site vous appartient. **Ne pas le supprimer ni le renommer**, sinon la propriété Search Console est dévalidée. Une règle du `.htaccess` le sert sans redirection.

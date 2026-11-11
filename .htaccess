@@ -9,6 +9,9 @@ Options -MultiViews
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Fichier de validation Google Search Console : servi tel quel, sans redirection
+  RewriteRule ^google[0-9a-f]+\.html$ - [L]
+
   # /index.html -> /  (évite le contenu dupliqué)
   RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
   RewriteRule ^index\.html$ https://www.novazur-it.com/ [L,R=301]
